@@ -1,0 +1,203 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>  // For usleep function
+#include <time.h>    // For random number generation
+
+#define RESET "\033[0m"
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+#define BLUE "\033[34m"
+#define MAGENTA "\033[35m"
+#define CYAN "\033[36m"
+#define WHITE "\033[37m"
+
+void slow_print(const char *text, unsigned int delay, const char *color) {
+    while (*text) {
+        printf("%s%c", color, *text);
+        fflush(stdout);
+        usleep(delay * 1000);  // usleep takes microseconds, so multiply by 1000 for milliseconds
+        text++;
+    }
+    printf(RESET);  // Reset the color
+}
+
+void pause_program() {
+    printf("\nPress Enter to continue...");
+    getchar();
+}
+
+void displayInformation() {
+    slow_print("Welcome to the MPFS-DISCO-KIT Comprehensive Guide!\n", 50, BLUE);
+    slow_print("The MPFS-DISCO-KIT is a development platform from Microchip Technology designed to explore and develop with the PolarFire SoC FPGA architecture.\n\n", 50, BLUE);
+
+    slow_print("Key Features:\n", 50, BLUE);
+    slow_print("1. RISC-V Architecture: The kit features a RISC-V-based CPU core, promoting an open-source approach to hardware design and enabling customization.\n", 50, BLUE);
+    slow_print("2. FPGA Fabric: Integrated FPGA fabric allows for hardware acceleration and customization, making it ideal for applications requiring high performance and flexibility.\n", 50, BLUE);
+    slow_print("3. High-Speed Interfaces: The kit includes high-speed interfaces like PCIe, USB, and Gigabit Ethernet, catering to diverse application needs.\n", 50, BLUE);
+    slow_print("4. Expansion Options: It provides various expansion headers and interfaces, facilitating easy integration with other hardware modules and peripherals.\n", 50, BLUE);
+    slow_print("5. Power Management: Advanced power management features support low-power operation, critical for embedded and IoT applications.\n", 50, BLUE);
+    slow_print("6. Software and Toolchain Support: The kit is supported by comprehensive software tools and development environments, including support for various operating systems and extensive documentation.\n", 50, BLUE);
+}
+
+void quizUser() {
+    int answer;
+
+    slow_print("\nQuiz Section:\n", 50, GREEN);
+    slow_print("1. Which architecture does the MPFS-DISCO-KIT use?\n", 50, GREEN);
+    slow_print("1. ARM\n2. RISC-V\n3. x86\n", 50, GREEN);
+    scanf("%d", &answer);
+    getchar();  // To consume the newline character left by scanf
+    if (answer == 2) {
+        slow_print("Correct!\n", 50, GREEN);
+    } else {
+        slow_print("Incorrect. The correct answer is RISC-V.\n", 50, GREEN);
+    }
+
+    slow_print("\n2. What is one of the high-speed interfaces included in the kit?\n", 50, GREEN);
+    slow_print("1. SPI\n2. PCIe\n3. I2C\n", 50, GREEN);
+    scanf("%d", &answer);
+    getchar();  // To consume the newline character left by scanf
+    if (answer == 2) {
+        slow_print("Correct!\n", 50, GREEN);
+    } else {
+        slow_print("Incorrect. The correct answer is PCIe.\n", 50, GREEN);
+    }
+}
+
+void displayAdvantages() {
+    slow_print("\nAdvantages:\n", 50, YELLOW);
+    slow_print("1. Customization: The combination of a programmable RISC-V core and FPGA fabric offers significant flexibility for customized designs.\n", 50, YELLOW);
+    slow_print("2. Open-Source Ecosystem: Being based on RISC-V, it taps into the growing open-source hardware ecosystem, allowing for community-driven development and support.\n", 50, YELLOW);
+    slow_print("3. Scalability: Suitable for a range of applications from simple embedded systems to complex, high-performance computing tasks.\n", 50, YELLOW);
+}
+
+void quizUserOnAdvantagesAndUseCases() {
+    int answer;
+
+    slow_print("\nQuiz Section on Advantages and Use Cases:\n", 50, CYAN);
+    slow_print("1. What is one advantage of the MPFS-DISCO-KIT's RISC-V core?\n", 50, CYAN);
+    slow_print("1. Closed-source hardware\n2. Customization\n3. Inflexibility\n", 50, CYAN);
+    scanf("%d", &answer);
+    getchar();  // To consume the newline character left by scanf
+    if (answer == 2) {
+        slow_print("Correct!\n", 50, CYAN);
+    } else {
+        slow_print("Incorrect. The correct answer is Customization.\n", 50, CYAN);
+    }
+
+    slow_print("\n2. Which of the following is a use case for the MPFS-DISCO-KIT?\n", 50, CYAN);
+    slow_print("1. Creating IoT Devices\n2. Simple hobby projects\n3. Running heavy-duty graphics applications\n", 50, CYAN);
+    scanf("%d", &answer);
+    getchar();  // To consume the newline character left by scanf
+    if (answer == 1) {
+        slow_print("Correct!\n", 50, CYAN);
+    } else {
+        slow_print("Incorrect. The correct answer is Creating IoT Devices.\n", 50, CYAN);
+    }
+}
+
+void displayUseCases() {
+    slow_print("\nUse Cases:\n", 50, MAGENTA);
+    slow_print("1. Embedded Systems: Ideal for creating embedded systems with specific performance and power requirements.\n", 50, MAGENTA);
+    slow_print("2. IoT Devices: Suitable for IoT applications that need a mix of computing power and low-power operation.\n", 50, MAGENTA);
+    slow_print("3. Research and Development: A great platform for academic and industrial research, given its flexibility and openness.\n", 50, MAGENTA);
+    slow_print("4. Prototyping and Development: Useful for rapid prototyping and development of custom hardware solutions.\n", 50, MAGENTA);
+}
+
+void displayImplementationGuide() {
+    slow_print("\nPractical Implementation Guide:\n", 50, RED);
+
+    slow_print("1. Setting Up the Kit:\n", 50, RED);
+    slow_print("   - Connect the MPFS-DISCO-KIT to your PC using the provided USB cable.\n", 50, RED);
+    slow_print("   - Install the necessary drivers and software tools from the Microchip website.\n", 50, RED);
+    slow_print("   - Follow the user manual to set up the development environment.\n\n", 50, RED);
+
+    slow_print("2. Creating Your First Project:\n", 50, RED);
+    slow_print("   - Open the development environment and create a new project.\n", 50, RED);
+    slow_print("   - Choose the appropriate RISC-V core and FPGA fabric configuration.\n", 50, RED);
+    slow_print("   - Write your application code, leveraging the hardware acceleration and customization options.\n\n", 50, RED);
+
+    slow_print("3. Compiling and Uploading Code:\n", 50, RED);
+    slow_print("   - Compile your project using the provided toolchain.\n", 50, RED);
+    slow_print("   - Upload the compiled code to the MPFS-DISCO-KIT using the USB interface.\n", 50, RED);
+    slow_print("   - Monitor the output and debug any issues using the built-in debugging tools.\n\n", 50, RED);
+
+    slow_print("4. Experimenting with Expansion Options:\n", 50, RED);
+    slow_print("   - Connect additional hardware modules to the expansion headers.\n", 50, RED);
+    slow_print("   - Integrate and test these modules within your project to enhance functionality.\n", 50, RED);
+}
+
+void displayCodingPractice() {
+    slow_print("\nCoding Practice Section:\n", 50, WHITE);
+
+    slow_print("Example 1: Blinking LED\n", 50, WHITE);
+    slow_print("/* This example shows how to blink an LED connected to a GPIO pin */\n", 50, WHITE);
+    slow_print("void blink_led() {\n", 50, WHITE);
+    slow_print("    while (1) {\n", 50, WHITE);
+    slow_print("        gpio_set_pin_high(LED_PIN);\n", 50, WHITE);
+    slow_print("        delay_ms(1000);\n", 50, WHITE);
+    slow_print("        gpio_set_pin_low(LED_PIN);\n", 50, WHITE);
+    slow_print("        delay_ms(1000);\n", 50, WHITE);
+    slow_print("    }\n", 50, WHITE);
+    slow_print("}\n\n", 50, WHITE);
+
+    slow_print("Example 2: UART Communication\n", 50, WHITE);
+    slow_print("/* This example demonstrates basic UART communication */\n", 50, WHITE);
+    slow_print("void uart_communication() {\n", 50, WHITE);
+    slow_print("    // Initialize UART\n", 50, WHITE);
+    slow_print("    uart_init(UART_PORT, BAUD_RATE);\n", 50, WHITE);
+    slow_print("\n", 50, WHITE);
+    slow_print("    while (1) {\n", 50, WHITE);
+    slow_print("4. Custom FPGA Design: Implement a custom hardware accelerator in the FPGA fabric for a specific application, such as image processing or machine learning.\n", 50, WHITE);
+
+    slow_print("Quiz Section on Coding and Projects:\n", 50, WHITE);
+    slow_print("1. What function is used to initialize the UART port?\n", 50, WHITE);
+    slow_print("1. uart_init\n2. uart_start\n3. uart_open\n", 50, WHITE);
+    
+    int answer;
+    scanf("%d", &answer);
+    getchar();  // To consume the newline character left by scanf
+    if (answer == 1) {
+        slow_print("Correct!\n", 50, WHITE);
+    } else {
+        slow_print("Incorrect. The correct answer is uart_init.\n", 50, WHITE);
+    }
+
+    slow_print("\n2. In the blinking LED example, what function is used to set the LED pin high?\n", 50, WHITE);
+    slow_print("1. gpio_set_pin_on\n2. gpio_set_pin_high\n3. gpio_enable_pin\n", 50, WHITE);
+    scanf("%d", &answer);
+    getchar();  // To consume the newline character left by scanf
+    if (answer == 2) {
+        slow_print("Correct!\n", 50, WHITE);
+    } else {
+        slow_print("Incorrect. The correct answer is gpio_set_pin_high.\n", 50, WHITE);
+    }
+}
+
+int main() {
+    srand(time(NULL)); 
+
+    displayInformation();
+    pause_program();
+
+    quizUser();
+    pause_program();
+
+    displayAdvantages();
+    pause_program();
+
+    quizUserOnAdvantagesAndUseCases();
+    pause_program();
+
+    displayUseCases();
+    pause_program();
+
+    displayImplementationGuide();
+    pause_program();
+
+    displayCodingPractice();
+    pause_program();
+
+    return 0;
+}
