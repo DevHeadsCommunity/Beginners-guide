@@ -90,10 +90,10 @@ The script includes quizzes and practical exercises to help you master the use o
 Throughout the tutorial, you’ll encounter multiple-choice quizzes that test your understanding of the material covered. For example:
 
 ```c
-slow_print("Q1: What is the main benefit of Dynamic Power Management?\n", 20);
-slow_print("a) Increased processing speed\n", 20);
-slow_print("b) Reduced power consumption\n", 20);
-slow_print("c) Enhanced security\n", 20);
+"Q1: What is the main benefit of Dynamic Power Management?\n", 20);
+"a) Increased processing speed"
+"b) Reduced power consumption"
+"c) Enhanced security"
 ```
 
 Users are required to input their answers, and the script will immediately confirm whether the answer is correct or incorrect, reinforcing the learning process.
